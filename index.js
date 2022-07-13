@@ -8,11 +8,14 @@ for(var i=0; i<MusicLister;i++){
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML);
+
+    buttonAnimation(buttonInnerHTML);
   });
 }
 
     document.addEventListener("keypress", function(event){
       makeSound(event.key);
+      buttonAnimation(event.key);
     });
 
     function makeSound(key){
@@ -56,3 +59,12 @@ for(var i=0; i<MusicLister;i++){
       }
    };
     
+  function buttonAnimation(currentKey){
+    var activebutton = document.querySelector("."+ currentKey);
+
+    activebutton.classList.add("pressed");
+
+    setTimeout(function(){
+      activebutton.classList.remove("pressed");
+    }, 100);
+  }
